@@ -1,0 +1,42 @@
+# SatQuery AI — REAL production registry. No mock model is used by the API.
+# The VLM is the domain-adapted AdaMLLM checkpoint from AdaptLLM.
+# Grounding DINO is the public zero-shot grounding model.
+# OSCD change detection uses the included trained FCSiamDiff checkpoint.
+# CROMA is TorchGeo pretrained optical-SAR representation learning.
+
+models:
+  - name: satquery-vlm-rs-qwen2vl
+    version: "1.0.0"
+    tasks: [SINGLE_IMAGE_VQA, CAPTIONING]
+    modalities: [OPTICAL, SAR]
+    checkpoint_path: AdaptLLM/remote-sensing-Qwen2-VL-2B-Instruct
+    quantization: "4bit"
+    requires_coregistration: false
+    max_input_px: 1024
+
+  - name: satquery-grounding-dino
+    version: "1.0.0"
+    tasks: [GROUNDING]
+    modalities: [OPTICAL, SAR]
+    checkpoint_path: IDEA-Research/grounding-dino-base
+    quantization: "none"
+    requires_coregistration: false
+    max_input_px: 1024
+
+  - name: satquery-change-fcsiamdiff-oscd
+    version: "1.0.0"
+    tasks: [CHANGE_DETECTION, CHANGE_VQA]
+    modalities: [OPTICAL]
+    checkpoint_path: checkpoints_change_oscd.pth
+    quantization: "none"
+    requires_coregistration: true
+    max_input_px: 1024
+
+  - name: satquery-fusion-croma
+    version: "1.0.0"
+    tasks: [OPTICAL_SAR_FUSION]
+    modalities: [OPTICAL, SAR]
+    checkpoint_path: torchgeo:CROMA_VIT
+    quantization: "none"
+    requires_coregistration: true
+    max_input_px: 1024

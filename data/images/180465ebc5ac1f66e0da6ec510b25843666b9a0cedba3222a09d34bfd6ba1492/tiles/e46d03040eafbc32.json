@@ -1,0 +1,17 @@
+{
+  "affine_transform": [
+    1.0,
+    0.0,
+    0.0,
+    0.0,
+    1.0,
+    0.0
+  ],
+  "array_path": "E:\\SatQuery-AI-SIH26167-REAL-RELEASE-v3\\Demo-main\\data\\images\\180465ebc5ac1f66e0da6ec510b25843666b9a0cedba3222a09d34bfd6ba1492\\tiles\\e46d03040eafbc32.tif",
+  "col_off": 0,
+  "height": 256,
+  "image_id": "180465ebc5ac1f66e0da6ec510b25843666b9a0cedba3222a09d34bfd6ba1492",
+  "row_off": 0,
+  "tile_id": "e46d03040eafbc32",
+  "width": 256
+}
